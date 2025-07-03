@@ -172,15 +172,35 @@ app.get('/', (req, res) => {
             <span class="method">GET</span> /api/events - Get all events
         </div>
         <div class="endpoint">
+            <span class="method">GET</span> /api/events/:id - Get specific event
+        </div>
+        <div class="endpoint">
             <span class="method">POST</span> /api/events - Create event (organizer only)
         </div>
         <div class="endpoint">
             <span class="method">POST</span> /api/events/:id/register - Register for event
         </div>
+        <div class="endpoint">
+            <span class="method">DELETE</span> /api/events/:id/unregister - Unregister for event
+        </div>
         
         <h3>📊 Registrations</h3>
         <div class="endpoint">
             <span class="method">GET</span> /api/registrations/my-registrations - Get user's registrations
+        </div>
+        <div class="endpoint">
+            <span class="method">GET</span> /api/registrations/event/:eventId/stats - Get registration statistics (organizer only)
+        </div>
+        
+        <h3>Health Check</h3>
+        <div class="endpoint">
+            <span class="method">GET</span> /api/health - Check API status
+        </div>
+        
+        <h3>🔐 Authentication</h3>
+        <p></p>Use Bearer token in Authorization header for protected routes:</p>
+        <div class="code">
+Authorization: Bearer YOUR_JWT_TOKEN
         </div>
         
         <h2>🧪 Quick Test</h2>
@@ -225,5 +245,5 @@ server.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
   console.log(`📡 Socket.IO enabled`);
   console.log(`📅 Email notifications scheduled every 6 hours`);
-  console.log(`🌐 CORS configured for: https://magical-gingersnap-0402a3.netlify.app`);
+  console.log(`🌐 CORS configured for: https://idyllic-frangipane-be5388.netlify.app`);
 });
