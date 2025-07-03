@@ -134,6 +134,92 @@ app.use('/*path', (req, res) => {
   res.status(404).json({ msg: 'Route not found' });
 });
 
+// Add this route before your error handlers in server.js
+app.get('/', (req, res) => {
+  res.send(`
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Event Management Dashboard API</title>
+        <style>
+            body { font-family: Arial, sans-serif; margin: 40px; line-height: 1.6; }
+            .header { text-align: center; color: #333; margin-bottom: 30px; }
+            .status { background: #10b981; color: white; padding: 5px 15px; border-radius: 20px; }
+            .endpoint { background: #f8f9fa; padding: 10px; margin: 5px 0; border-radius: 5px; }
+            .method { background: #007bff; color: white; padding: 2px 8px; border-radius: 3px; margin-right: 10px; }
+            .code { background: #f1f1f1; padding: 15px; border-radius: 5px; font-family: monospace; }
+        </style>
+    </head>
+    <body>
+        <div class="header">
+            <h1>🎉 Event Management Dashboard API</h1>
+            <span class="status">🟢 API Online</span>
+            <p>Backend API for managing events and registrations</p>
+        </div>
+        
+        <h2>📋 API Endpoints</h2>
+        
+        <h3>🔐 Authentication</h3>
+        <div class="endpoint">
+            <span class="method">POST</span> /api/auth/register - Register new user
+        </div>
+        <div class="endpoint">
+            <span class="method">POST</span> /api/auth/login - Login user
+        </div>
+        
+        <h3>🎪 Events</h3>
+        <div class="endpoint">
+            <span class="method">GET</span> /api/events - Get all events
+        </div>
+        <div class="endpoint">
+            <span class="method">POST</span> /api/events - Create event (organizer only)
+        </div>
+        <div class="endpoint">
+            <span class="method">POST</span> /api/events/:id/register - Register for event
+        </div>
+        
+        <h3>📊 Registrations</h3>
+        <div class="endpoint">
+            <span class="method">GET</span> /api/registrations/my-registrations - Get user's registrations
+        </div>
+        
+        <h2>🧪 Quick Test</h2>
+        <div class="code">
+# Check API health<br>
+curl https://locus-8zft.onrender.com/api/health<br><br>
+
+# Register a user<br>
+curl -X POST https://locus-8zft.onrender.com/api/auth/register \\<br>
+&nbsp;&nbsp;-H "Content-Type: application/json" \\<br>
+&nbsp;&nbsp;-d '{"name":"Test User","email":"test@example.com","password":"password123","role":"user"}'<br><br>
+
+# Get all events<br>
+curl https://locus-8zft.onrender.com/api/events
+        </div>
+        
+        <h2>🌐 Frontend Integration</h2>
+        <p><strong>API Base URL:</strong> https://locus-8zft.onrender.com/api</p>
+        <p><strong>Socket.IO URL:</strong> https://locus-8zft.onrender.com</p>
+        <p><strong>Authentication:</strong> Include Bearer token in Authorization header</p>
+        
+        <h2>✨ Features</h2>
+        <ul>
+            <li>✅ User Authentication (JWT-based)</li>
+            <li>✅ Role-based Access Control (User/Organizer)</li>
+            <li>✅ Event Management (CRUD operations)</li>
+            <li>✅ Real-time Updates (Socket.IO)</li>
+            <li>✅ Email Notifications</li>
+        </ul>
+        
+        <div style="text-align: center; margin-top: 40px; color: #666;">
+            <p>Built for Event Management Dashboard | Ready for Frontend Integration</p>
+        </div>
+    </body>
+    </html>
+  `);
+});
+
+
 const PORT = process.env.PORT || 5000;
 server.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
