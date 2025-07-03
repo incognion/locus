@@ -26,8 +26,8 @@ const corsOptions = {
     'http://localhost:3000',  // Development
     'http://localhost:3001',  // Alternative development port
     'http://localhost:5173',  // Vite development server
-    'https://magical-gingersnap-0402a3.netlify.app',  // Your production frontend
-    'https://magical-gingersnap-0402a3.netlify.app/', // With trailing slash
+    'https://idyllic-frangipane-be5388.netlify.app',  // Your production frontend
+    'https://idyllic-frangipane-be5388.netlify.app/', // With trailing slash
   ],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
@@ -69,8 +69,8 @@ export const io = new Server(server, {
       'http://localhost:3000',
       'http://localhost:3001',
       'http://localhost:5173',
-      'https://magical-gingersnap-0402a3.netlify.app',
-      'https://magical-gingersnap-0402a3.netlify.app/'
+      'https://idyllic-frangipane-be5388.netlify.app',
+      'https://idyllic-frangipane-be5388.netlify.app/'
     ],
     methods: ["GET", "POST"],
     credentials: true
